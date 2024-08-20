@@ -52,3 +52,17 @@ li a {
     background: #692A86;
     box-shadow: 2px 2px 20px 10px rgba(179, 74, 212, 0.62) inset;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #5a2673;
+    border-radius: 30px;
+}
+ 
+::-webkit-scrollbar-thumb{
+    background: #f49724;
+    border-radius: 30px;
+}
