@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import BannerHome from '../components/Banner-home.astro';
+import PriceTable from '../components/Price-table.astro';
+---
+
+<Layout title="Velonet">
+
+    <BannerHome />
+
+    <section class="bg-roxo px-24 py-20">
+
+        <div class="flex flex-row gap-12">
+            <div class="md:w-[30%]">
+                <img src="/images/favicon.svg" alt="">
+                <h1 class="text-secondary text-base font-bold mt-2">Nuestros planes</h1>
+                <h2 class="text-white text-2xl mt-2">Conéctate con la mejor red. ¡Velonet te ofrece la velocidad y estabilidad que necesitas!</h2>
+                <span class="flex flex-row items-center gap-2 font-light mt-6 cursor-pointer hover:translate-x-1 duration-300"><img class="h-8" src="/images/right.svg" alt="">Ver todos los planes</span>
+            </div>
+            <div class="md:w-[70%]">
+                <div class="flex flex-row justify-between gap-8">
+                    <PriceTable />
+                    <PriceTable />
+                    <PriceTable />
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <img src="/images/Line.png" alt="">
+        </div>
+
+    </section>
+
+</Layout>
+

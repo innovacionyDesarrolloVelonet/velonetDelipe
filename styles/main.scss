@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    @font-face {
+        font-family: 'Montserrat';
+        src: url("/fonts/Montserrat-Bold.ttf") format("truetype");
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Montserrat';
+        src: url("/fonts/Montserrat-Medium.ttf") format("truetype");
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Montserrat';
+        src: url("/fonts/Montserrat-Light.ttf") format("truetype");
+        font-weight: 200;
+    }
+    @font-face {
+        font-family: 'Bahnschrift';
+        src: url("/fonts/BAHNSCHRIFT.ttf") format("truetype");
+        font-weight: 200;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/images/background.png");
+    background-size: cover;
+    font-family: 'Montserrat', 'OpenSans';
+    color: white;
+}
+
+li a {
+    @apply font-bold text-base hover:text-secondary duration-300
+}
+
+.bg-roxo {
+    background-image: url('/images/bg-roxo.png');
+    background-size: cover;
+}
+
+.coluna-planos {
+    border-radius: 20px;
+    background: #692A86;
+    box-shadow: 2px 2px 20px 10px rgba(179, 74, 212, 0.62) inset;
+}

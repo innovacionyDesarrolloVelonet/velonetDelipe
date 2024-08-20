@@ -1,0 +1,9 @@
+---
+interface Props {
+    banner: string;
+}
+
+const { banner } = Astro.props;
+---
+
+<video class="w-full aspect-Default block md:hidden" src ={banner} autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload">Banner não disponivel</video>
