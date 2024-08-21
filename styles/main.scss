@@ -66,3 +66,11 @@ li a {
     background: #f49724;
     border-radius: 30px;
 }
+
+input {
+    @apply p-2 rounded-2xl bg-white/30
+}
+
+input::placeholder {
+    @apply text-white/80
+}
