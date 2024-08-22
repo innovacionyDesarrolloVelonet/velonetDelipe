@@ -74,3 +74,11 @@ input {
 input::placeholder {
     @apply text-white/80
 }
+
+#fale input {
+    @apply border border-black/10 rounded-md py-3
+}
+
+#fale input::placeholder {
+    @apply text-black/50
+}
