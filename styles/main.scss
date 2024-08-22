@@ -21,7 +21,7 @@
     @font-face {
         font-family: 'Bahnschrift';
         src: url("/fonts/BAHNSCHRIFT.ttf") format("truetype");
-        font-weight: 200;
+        font-weight: normal;
     }
 }
 
@@ -34,7 +34,7 @@
 body {
     background-image: url("/images/background.png");
     background-size: cover;
-    font-family: 'Montserrat', 'OpenSans';
+    font-family: 'Bahnschrift', 'OpenSans';
     color: white;
 }
 
