@@ -1,14 +1,15 @@
-<div id="citySelectPopup" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
+<div id="citySelectPopup" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden animate-fadeIn">
   <div class="bg-white flex justify-center items-center flex-col p-8 rounded-lg shadow-lg max-w-md w-full">
-    <img class="h-20" src="/images/logo-roxo.svg" alt="">
+    <img class="h-20" src="/images/logo-roxo.svg" alt="Logo">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center mt-4">Selecione sua cidade</h2>
-    <select id="citySelect" class="block w-full text-lg px-4 py-3 bg-gray-200 rounded hover:bg-gray-300">
+    <select id="citySelect" class="block w-full text-lg px-4 py-3 bg-primary rounded hover:cursor-pointer">
       <option value="" disabled selected>Escolha sua cidade</option>
-      <option value="cidade1">Cidade 1</option>
-      <option value="cidade2">Cidade 2</option>
-      <option value="cidade3">Cidade 3</option>
+      <option value="medellín">Medellín</option>
+      <option value="bello">Bello</option>
+      <option value="sabaneta">Sabaneta</option>
+      <option value="la-estrella">La Estrella</option>
     </select>
-    <button id="confirmButton" class="mt-6 w-full bg-purple-600 text-white text-lg py-3 rounded hover:bg-purple-700">Confirmar</button>
+    <button onclick="handleCitySelect()" class="mt-6 w-full bg-secondary text-white text-lg py-3 rounded hover:bg-primary duration-300">Confirmar</button>
   </div>
 </div>
 
@@ -29,10 +30,7 @@
     }
   }
 
-  // Adiciona o evento de clique ao botão "Confirmar"
-  document.getElementById('confirmButton').addEventListener('click', handleCitySelect);
-
-  // Exemplo: Abrir o popup assim que a página carrega, mas somente se a URL for a página inicial
+  // Exemplo: Abrir o popup assim que a página carrega
   window.onload = function() {
     if (window.location.pathname === '/') {
       openCitySelectPopup();
