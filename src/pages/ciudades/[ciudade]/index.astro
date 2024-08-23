@@ -1,0 +1,39 @@
+---
+
+// export function getStaticPaths() {
+//   return [
+//     {params: {ciudade: 'medellin'}},
+//     {params: {ciudade: 'Bello'}},
+//     {params: {ciudade: 'sabaneta'}},
+//     {params: {ciudade: 'la-estrella'}},
+//   ];
+// }
+
+const { ciudade } = Astro.params;
+import Layout from '../../../layouts/Layout.astro';
+import Card from '../../../components/Card.astro';
+import BannerHome from '../../../components/Banner-home.astro';
+import Planos from '../../../components/Planos.astro';
+import Descobre from '../../../components/Descobre.astro'
+import Conecta from '../../../components/Conecta.astro'
+import FaleConosco from '../../../components/Fale-conosco.astro'
+---
+
+<Layout title=`Velonet - ${ciudade}`>
+
+    <BannerHome />
+
+    <Planos />
+
+    <img src="/images/banner-dgo.png" alt="">
+
+    <Descobre />
+
+    <Conecta />
+
+    <img src="/images/banner-móvil.png" alt="">
+
+    <FaleConosco />
+
+</Layout>
+

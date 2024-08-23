@@ -1,3 +1,7 @@
+---
+const { ciudade } = Astro.params;
+---
+
 <header class="px-20 absolute z-50 w-full bg-gradient-to-b from-primary/80 to-transparent">
     <div class="bg-white/10 px-20 py-4 flex flex-row mt-8 rounded-2xl items-center justify-between backdrop-blur-md">
         <div>
@@ -8,7 +12,7 @@
                 <nav>
                     <ul class="flex flex-row text-white gap-10">
                         <li><a href="#">Para você</a></li>
-                        <li><a href="#">Para sua empresa</a></li>
+                        <li><a href={`${ciudade}/telefonia-movel`}>Telefonia Móvel</a></li>
                         <li><a href="#">Suporte</a></li>
                         <li><a href="#">Central do assinante</a></li>
                     </ul>
@@ -16,7 +20,7 @@
             </menu>
         </div>
         <div>
-            <span class="flex flex-row gap-2 text-white font-bold items-center"><img src="/images/map.svg" alt="">Medellin</span>
+            <span class="flex flex-row gap-2 text-white font-bold items-center uppercase"><img src="/images/map.svg" alt="">{ciudade}</span>
         </div>
     </div>
 </header>

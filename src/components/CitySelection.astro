@@ -1,0 +1,53 @@
+---
+// ./src/components/CitySelection.astro
+
+interface HTMLButtonElementWithCity extends HTMLButtonElement {
+  dataset: {
+    city: string;
+  };
+}
+
+function handleCityChange(event: Event) {
+  const target = event.target as HTMLButtonElementWithCity;
+  const selectedCity = target.dataset.city;
+  if (selectedCity) {
+    localStorage.setItem("selectedCity", selectedCity); // Armazena a cidade no LocalStorage
+    window.location.href = `/${selectedCity}/planos`; // Redireciona para a página de planos da cidade selecionada
+  }
+}
+---
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+  <div class="bg-white rounded-lg p-8">
+    <h2 class="text-xl font-semibold mb-4">Seleccione su ciudad</h2>
+    <ul>
+      <li>
+        <button
+          class="text-blue-500 hover:underline"
+          data-city="bogota"
+          onclick={handleCityChange}
+        >
+          Bogotá
+        </button>
+      </li>
+      <li>
+        <button
+          class="text-blue-500 hover:underline"
+          data-city="medellin"
+          onclick={handleCityChange}
+        >
+          Medellín
+        </button>
+      </li>
+      <li>
+        <button
+          class="text-blue-500 hover:underline"
+          data-city="cali"
+          onclick={handleCityChange}
+        >
+          Cali
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
