@@ -1,28 +1,39 @@
----
-const cities = ["Medellín", "Bello", "Sabaneta", "La Estrella"];
-const { setCity } = Astro.props;
----
-
-<div id="city-popup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-  <div class="bg-white p-6 rounded-lg text-center shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">Escolha sua cidade</h2>
-    <select id="city-select" class="w-full p-2 border border-gray-300 rounded-md mb-4">
-      <option value="" disabled selected>Selecione sua cidade</option>
-      {cities.map(city => (
-        <option value={city}>{city}</option>
-      ))}
+<div id="citySelectPopup" class="fixed animate-fade inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
+  <div class="bg-white flex justify-center items-center flex-col p-8 rounded-lg shadow-lg max-w-md w-full">
+    <img class="h-20" src="/images/logo-roxo.svg" alt="">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center mt-4">Selecione sua cidade</h2>
+    <select id="citySelect" class="block w-full text-lg px-4 py-3 bg-primary rounded hover:cursor-pointer">
+      <option value="" disabled selected>Escolha sua cidade</option>
+      <option value="medellín">Medellín</option>
+      <option value="bello">Bello</option>
+      <option value="sabaneta">Sabaneta</option>
+      <option value="la-estrella">La Estrella</option>
     </select>
-    <button onclick="handleCityChange()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-      Confirmar
-    </button>
+    <button onclick="handleCitySelect()" class="mt-6 w-full bg-secondary text-white text-lg py-3 rounded hover:bg-primary duration-300">Confirmar</button>
   </div>
 </div>
 
 <script is:inline>
-  function handleCityChange() {
-    const selectElement = document.getElementById('city-select');
-    const selectedCity = selectElement.value;
-    setCity(selectedCity);
-    document.getElementById('city-popup').style.display = 'none';
+  // Função para abrir o popup
+  function openCitySelectPopup() {
+    document.getElementById('citySelectPopup').classList.remove('hidden');
   }
+
+  // Função para redirecionar o usuário após selecionar a cidade
+  function handleCitySelect() {
+    const city = document.getElementById('citySelect').value;
+    if (city) {
+      // Redireciona para a URL da cidade selecionada
+      window.location.href = `/ciudades/${city}`;
+    } else {
+      alert('Por favor, selecione uma cidade.');
+    }
+  }
+
+  // Exemplo: Abrir o popup assim que a página carrega
+  window.onload = function() {
+    if (window.location.pathname === '/') {
+      openCitySelectPopup();
+    }
+  };
 </script>

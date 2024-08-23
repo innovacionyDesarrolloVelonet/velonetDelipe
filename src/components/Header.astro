@@ -1,18 +1,21 @@
 ---
 const { ciudade } = Astro.params;
+import Popup from "./Popup.astro";
 ---
 
 <header class="px-20 absolute z-50 w-full bg-gradient-to-b from-primary/80 to-transparent">
     <div class="bg-white/10 px-20 py-4 flex flex-row mt-8 rounded-2xl items-center justify-between backdrop-blur-md">
         <div>
-            <a href="/" target="_blank" rel="noopener noreferrer"><img class="h-20 hover:-translate-y-1 duration-300" src="/images/Logo.svg" alt=""></a>
+            <a href="/" rel="noopener noreferrer"><img class="h-20 hover:-translate-y-1 duration-300" src="/images/Logo.svg" alt=""></a>
         </div>
         <div>
             <menu>
                 <nav>
                     <ul class="flex flex-row text-white gap-10">
-                        <li><a href="#">Para você</a></li>
-                        <li><a href={`${ciudade}/telefonia-movel`}>Telefonia Móvel</a></li>
+                        <li><a href="/teste">Para você</a></li>
+                        <li><a href={`/${ciudade}/telefonia-movil`}>Telefonia Móvel</a></li>
+                        <li><a href={`/${ciudade}/camaras`}>Camaras</a></li>
+                        <li><a href={`/${ciudade}/television`}>Television</a></li>
                         <li><a href="#">Suporte</a></li>
                         <li><a href="#">Central do assinante</a></li>
                     </ul>
@@ -20,7 +23,9 @@ const { ciudade } = Astro.params;
             </menu>
         </div>
         <div>
-            <span class="flex flex-row gap-2 text-white font-bold items-center uppercase"><img src="/images/map.svg" alt="">{ciudade}</span>
+            <span onclick="openCitySelectPopup()" class="flex cursor-pointer flex-row gap-2 text-white font-bold items-center uppercase"><img src="/images/map.svg" alt="">{ciudade}</span>
         </div>
     </div>
 </header>
+
+<Popup />
