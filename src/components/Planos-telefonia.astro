@@ -1,0 +1,49 @@
+---
+import PriceTable from './Price-table-telefonia.astro';
+---
+
+<section class="bg-roxo px-24 max-lg:px-10 py-20">
+
+    <div class="flex flex-col gap-12">
+        <div>
+            <h1 class="text-secondary text-center text-base font-bold mt-2">Nuestros planes</h1>
+            <h2 class="text-white text-3xl text-center mt-2">¡El Plan que lo Tiene Todo!</h2>
+        </div>
+        <div>
+            <div class="flex flex-row max-lg:flex-col justify-center gap-8">
+                <PriceTable />
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-16">
+        <img src="/images/Line.png" alt="">
+    </div>
+
+    <div class="mt-20 flex flex-row max-lg:flex-col justify-between max-lg:justify-center">
+        <div class="bg-[#692a86] hover:-translate-y-1 duration-300 w-72 py-8 px-4 rounded-2xl flex flex-col justify-center items-center">
+            <img class="h-20" src="/images/sms.svg" alt="">
+            <h2 class="text-2xl mt-2 text-center font-bold text-secondary">Minutos y SMS Ilimitados</h2>
+            <h3 class="text-center mt-4">Habla cuanto quieras con quien quieras, sin preocupaciones.</h3>
+        </div>  
+
+        <div class="bg-[#692a86] hover:-translate-y-1 duration-300 w-72 py-8 px-4 rounded-2xl flex flex-col justify-center items-center">
+            <img class="h-20" src="/images/promocao.svg" alt="">
+            <h2 class="text-2xl mt-2 text-center font-bold text-secondary">Promoción de Gigas</h2>
+            <h3 class="text-center mt-4">Paga por 16 GB y recibe 32 GB en nuestros planes promocionales</h3>
+        </div>  
+
+        <div class="bg-[#692a86] hover:-translate-y-1 duration-300 w-72 py-8 px-4 rounded-2xl flex flex-col justify-center items-center">
+            <img class="h-20" src="/images/chat.svg" alt="">
+            <h2 class="text-2xl mt-2 text-center font-bold text-secondary">Chat sin Consumo de Datos</h2>
+            <h3 class="text-center mt-4">Usa WhatsApp y Facebook Messenger para enviar mensajes de texto sin consumir tus datos.</h3>
+        </div>  
+
+        <div class="bg-[#692a86] hover:-translate-y-1 duration-300 w-72 py-8 px-4 rounded-2xl flex flex-col justify-center items-center">
+            <img class="h-20" src="/images/transmissao.svg" alt="">
+            <h2 class="text-2xl mt-2 text-center font-bold text-secondary">Cobertura Nacional</h2>
+            <h3 class="text-center mt-4">Siempre estarás conectado, sin importar dónde estés.</h3>
+        </div>  
+    </div>
+
+</section>

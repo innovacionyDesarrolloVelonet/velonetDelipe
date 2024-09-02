@@ -1,8 +1,5 @@
----
----
-
 <div id="popup" class="fixed animate-fade inset-0 snap-center flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative overflow-y-auto max-h-screen">
     <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 text-2xl">
       &times;
     </button>
@@ -53,11 +50,13 @@
     // Função para abrir o popup
     function openPopup() {
       popup.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Desabilita o scroll no background
     }
 
     // Função para fechar o popup
     closePopupButton.addEventListener('click', function() {
       popup.classList.add('hidden');
+      document.body.style.overflow = ''; // Reabilita o scroll no background
     });
 
     // Exibe o popup após 3 segundos
