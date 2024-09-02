@@ -1,39 +1,66 @@
-<div id="citySelectPopup" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden animate-fadeIn">
-  <div class="bg-white flex justify-center items-center flex-col p-8 rounded-lg shadow-lg max-w-md w-full">
-    <img class="h-20" src="/images/logo-roxo.svg" alt="Logo">
-    <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center mt-4">Selecciona tu ciudad</h2>
-    <select id="citySelect" class="block w-full text-lg px-4 py-3 bg-primary rounded hover:cursor-pointer">
-      <option value="" disabled selected>Selecciona tu ciudad</option>
-      <option value="medellín">Medellín</option>
-      <option value="bello">Bello</option>
-      <option value="sabaneta">Sabaneta</option>
-      <option value="la-estrella">La Estrella</option>
-    </select>
-    <button onclick="handleCitySelect()" class="mt-6 w-full bg-secondary text-white text-lg py-3 rounded hover:bg-primary duration-300">Confirmar</button>
+---
+---
+
+<div id="popup" class="fixed animate-fade inset-0 snap-center flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative">
+    <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 text-2xl">
+      &times;
+    </button>
+    <div class="text-center">
+      <p class="bg-purple-800 text-white py-1 px-4 rounded-full inline-block text-sm font-semibold">
+        PRIMER MES GRATIS
+      </p>
+      <div class="mt-4 text-left">
+        <span class="text-purple-800 text-lg font-bold">40% DESCUENTO</span>
+        <h2 class="text-6xl text-secondary font-extrabold mt-2">ilimitado</h2>
+        <p class="text-gray-600 mt-2 text-lg">Mensual del mes 2 al 12</p>
+        <p class="text-3xl font-bold mt-2 text-gray-800">$41.994</p>
+        <p class="text-gray-400 text-sm line-through mt-1">luego $69.990 x mes</p>
+      </div>
+      
+      <form class="mt-6 text-left">
+        <label for="phone" class="block text-gray-700 font-medium mb-2">Ingresa tu número de celular:</label>
+        <input
+          type="text" 
+          id="phone"
+          placeholder="3XX XXX XX XX" 
+          class="border border-gray-300 rounded-md py-2 px-4 w-full"
+        />
+        <button type="button" class="bg-pink-600 text-white rounded-md py-3 px-4 w-full mt-4 font-semibold">
+          ¡TE LLÁMAMOS!
+        </button>
+      </form>
+      
+      <div class="mt-6 text-left">
+        <p class="text-gray-800 text-sm font-medium">O PUEDES COMPRARLO ONLINE CON 40% DE DTO. X 11 MESES</p>
+        <button type="button" class="bg-purple-800 text-white rounded-md py-3 px-4 w-full mt-4 font-semibold">
+          ¡COMPRAR ONLINE!
+        </button>
+      </div>
+      
+      <p class="text-gray-400 mt-4 text-xs">
+        Vigente solo para portabilidad en wom.co. Sujeto a validación crediticia. TyC en wom.co/tyc_pospago
+      </p>
+    </div>
   </div>
 </div>
 
 <script is:inline>
-  // Função para abrir o popup
-  function openCitySelectPopup() {
-    document.getElementById('citySelectPopup').classList.remove('hidden');
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('popup');
+    const closePopupButton = document.getElementById('closePopup');
 
-  // Função para redirecionar o usuário após selecionar a cidade
-  function handleCitySelect() {
-    const city = document.getElementById('citySelect').value;
-    if (city) {
-      // Redireciona para a URL da cidade selecionada
-      window.location.href = `/ciudades/${city}`;
-    } else {
-      alert('Por favor, selecione uma cidade.');
+    // Função para abrir o popup
+    function openPopup() {
+      popup.classList.remove('hidden');
     }
-  }
 
-  // Exemplo: Abrir o popup assim que a página carrega
-  window.onload = function() {
-    if (window.location.pathname === '/') {
-      openCitySelectPopup();
-    }
-  };
+    // Função para fechar o popup
+    closePopupButton.addEventListener('click', function() {
+      popup.classList.add('hidden');
+    });
+
+    // Exibe o popup após 3 segundos
+    setTimeout(openPopup, 3000);
+  });
 </script>

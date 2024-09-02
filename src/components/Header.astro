@@ -3,27 +3,49 @@ const { ciudade } = Astro.params;
 import Popup from "./Popup.astro";
 ---
 
-<header class="px-20 absolute z-50 w-full bg-gradient-to-b from-primary/80 to-transparent">
-    <div class="bg-white/10 px-20 py-4 flex flex-row mt-8 rounded-2xl items-center justify-between backdrop-blur-md">
+<header class="md:px-20 absolute z-50 w-full bg-gradient-to-b from-primary/80 to-transparent">
+    <div class="bg-white/10 px-20 py-4 max-lg:px-10 max-lg:py-4 flex flex-row mt-8 rounded-2xl items-center justify-between backdrop-blur-md">
         <div>
-            <a href="/" rel="noopener noreferrer"><img class="h-20 hover:-translate-y-1 duration-300" src="/images/Logo.svg" alt=""></a>
+            <a href="/" rel="noopener noreferrer"><img class="h-20 max-lg:h-12 hover:-translate-y-1 duration-300" src="/images/Logo.svg" alt=""></a>
         </div>
         <div>
             <menu>
                 <nav>
-                    <ul class="flex flex-row text-white gap-10">
-                        <li><a href="/teste">Para ti</a></li>
-                        <li><a href={`/${ciudade}/telefonia-movil`}>Servicios</a></li>
-                        <li><a href="#">Apoyo</a></li>
+                    <img onclick="showMenu()" class="h-10 md:hidden" src="/images/cardapio.svg" alt="">
+                    <ul id="menu" class="md:flex max-lg:absolute animate-fade max-lg:justify-center max-lg:items-center hidden max-lg:w-full max-lg:top-24 max-lg:left-0 max-lg:bg-primary max-lg:py-10 flex-row max-lg:flex-col text-white gap-10">
+                        <li><a href='#'>Para ti</a></li>
+                        <li class="relative group max-lg:text-center">
+                            <a href="#" class="flex items-center max-lg:text-center">
+                                Servicios
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </a>
+                            <ul class="absolute left-1/2 w-[200px] z-50 transform -translate-x-1/2 hidden group-hover:flex flex-col bg-white shadow-lg rounded-lg py-2 text-black">
+                                <li class="text-sm"><a href="/planos-de-internet" class="block font-light text-center px-4 py-2 hover:bg-gray-200">Planos Residenciais</a></li>
+                                <li class="text-sm"><a href="/planos-empresariais" class="block font-light text-center px-4 py-2 hover:bg-gray-200">Planos Empresariais</a></li>
+                                <li class="text-sm"><a href="/planos-empresariais" class="block font-light text-center px-4 py-2 hover:bg-gray-200">Link dedicado</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Contáctanos</a></li>
                         <li><a href="#">Centro de suscriptores</a></li>
                     </ul>
                 </nav>
             </menu>
         </div>
-        <div>
-            <span onclick="openCitySelectPopup()" class="flex cursor-pointer flex-row gap-2 text-white font-bold items-center uppercase"><img src="/images/map.svg" alt="">{ciudade}</span>
+        <div class="max-lg:hidden">
+            <button class="bg-secondary max-lg:hidden w-44 py-2 rounded-full font-bold hover:bg-primary duration-300">ASSINE YA</button>
         </div>
     </div>
 </header>
 
 <Popup />
+
+<script is:inline>
+
+    const menu = document.getElementById('menu')
+
+    function showMenu() {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex')
+    }
+
+</script>

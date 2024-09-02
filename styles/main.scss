@@ -39,7 +39,7 @@ body {
 }
 
 li a {
-    @apply font-bold text-base hover:text-secondary duration-300
+    @apply font-bold text-base hover:text-secondary duration-300 max-lg:text-center
 }
 
 .bg-roxo {
