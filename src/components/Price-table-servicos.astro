@@ -1,9 +1,11 @@
 ---
 interface Props {
 	mega: string;
+    image: string;
+    valor: string;
 }
 
-const { mega } = Astro.props;
+const { mega, image, valor } = Astro.props;
 ---
 
 <div class="coluna-planos group hover:-translate-y-1 duration-300 w-72 px-6 py-12 flex flex-col items-center relative">
@@ -16,25 +18,17 @@ const { mega } = Astro.props;
     </div>
     <div class="flex flex-row gap-2 mt-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
-        <p>Equipo Router</p>
+        <img class="h-12" src={image} alt="">
     </div>
-    <div class="flex flex-row gap-2 mt-6 items-center">
-        <img class="h-6" src="/images/mais.svg" alt="">
-        <p>WiFi prémium</p>
-    </div>
-    <div class="flex flex-row gap-2 mt-6 items-center">
-        <img class="h-6" src="/images/mais.svg" alt="">
-        <p>Soporte experto</p>
-    </div>
-    <!-- <div class="mt-6 flex flex-col justify-center items-center">
+    <div class="mt-6 flex flex-col justify-center items-center">
         <span class="text-center text-base font-light">POR APENAS:</span>
         <div class="flex flex-row mt-2 justify-center items-center gap-2">
-            <div><h3 class="text-6xl font-bold"><span class="text-secondary font-normal text-base">$</span>99</h3></div>
+            <div><h3 class="text-6xl font-bold"><span class="text-secondary font-normal text-base">$</span>{valor}</h3></div>
             <div class="flex flex-col">
                 <span class="text-white">.900</span>
                 <span class="text-secondary text-xs">MENSUAL</span>
             </div>
         </div>
-    </div> -->
-    <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary flex flex-row items-center justify-center gap-2 text-white py-2 px-4 uppercase">Contrata ahora <img class="h-6" src="/images/whatsapp.svg" alt=""></button>
+    </div>
+    <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary flex flex-row gap-2 justify-center to-primary text-white py-2 px-4 ">Contrata ahora<img class="h-6" src="/images/whatsapp.svg" alt=""></button>
 </div>

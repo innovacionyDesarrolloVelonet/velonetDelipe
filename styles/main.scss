@@ -82,3 +82,11 @@ input::placeholder {
 #fale input::placeholder {
     @apply text-black/50
 }
+
+textarea {
+    @apply border border-black/10 rounded-md py-3 text-black/50 p-2
+}
+
+textarea::placeholder {
+    @apply text-black/50
+}

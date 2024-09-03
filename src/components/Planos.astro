@@ -1,5 +1,5 @@
 ---
-import PriceTable from '../components/Price-table.astro';
+import PriceTable from './Price-table-servicos.astro';
 import Area from '../components/CovereageArea.astro'
 ---
 
@@ -10,13 +10,13 @@ import Area from '../components/CovereageArea.astro'
             <img src="/images/favicon.svg" alt="">
             <h1 class="text-secondary text-base font-bold mt-2">Nuestros planes</h1>
             <h2 class="text-white text-2xl mt-2">Conéctate con la mejor red. ¡Velonet te ofrece la velocidad y estabilidad que necesitas!</h2>
-            <span class="flex flex-row items-center gap-2 font-light mt-6 cursor-pointer hover:translate-x-1 duration-300"><img class="h-8" src="/images/right.svg" alt="">Ver todos los planes</span>
+            <a href="/planes-de-internet"><span class="flex flex-row items-center gap-2 font-light mt-6 cursor-pointer hover:translate-x-1 duration-300"><img class="h-8" src="/images/right.svg" alt="">Ver todos los planes</span></a>
         </div>
         <div class="md:w-[70%]">
             <div class="flex flex-row max-lg:flex-col justify-between gap-8">
-                <PriceTable />
-                <PriceTable />
-                <PriceTable />
+                <PriceTable mega='800' image='/images/dgo.png' valor='109' />
+                <PriceTable mega='800' image='/images/movilidad.png' valor='99' />
+                <PriceTable mega='800' image='/images/cam.png' valor='99' />
             </div>
         </div>
     </div>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import BannerHome from '../components/Banner-home.astro';
+import Planos from '../components/Planos.astro';
+import Descobre from '../components/Descobre.astro'
+import Conecta from '../components/Conecta.astro'
+import FaleConosco from '../components/Fale-conosco.astro'
+import Popup from '../components/Popup.astro';
+---
+
+<Layout title="Velonet - Camaras">
+    
+    <BannerHome />
+
+    <section>
+        <div
+        class="flex md:flex-row gap-16 max-lg:flex-col mt-20 max-lg:justify-center max-lg:items-center px-[6%]"
+    >
+        <div class="md:w-[50%]">
+            <img class="rounded-lg" src="/images/camera.jpg" alt="" />
+        </div>
+        <div
+            class="w-[70%] items-start flex flex-col justify-center max-lg:items-center max-lg:justify-center"
+        >
+            <h2 class="text-4xl text-[#0f1f56] font-bold">Protección que Ves, Tranquilidad que Sientes.</h2>
+            <span
+                class="text-black text-lg text-light max-lg:text-center mt-8 mb-4 w-[80%]"
+                >Monitorea tu hogar o negocio con las cámaras de seguridad Velonet. Con acceso en tiempo real a través de la app y almacenamiento seguro en la nube, aseguras el cuidado que tu familia o empresa merece, estés donde estés.
+            </span>
+            <a href="#" target="_blank"><button
+                class="mt-6 mb-6 rounded-lg bg-gradient-to-tr from-primary to-secondary text-white text-base px-12 py-3 font-bold flex flex-row items-center justify-center gap-4 hover:-translate-y-1 transition-[16s]"
+                ><img
+                    class="h-4"
+                    src="/images/logos/Whatsapp.svg"
+                    alt=""
+                />Habla con un consultor</button
+            ></a>
+        </div>
+    </div>
+    </section>
+
+    <img class="mt-20" src="/images/banner-camera.png" alt="">
+
+    <Descobre />
+
+    <Conecta />
+
+    <img src="/images/banner-móvil.png" alt="">
+
+    <FaleConosco />
+
+</Layout>
+
