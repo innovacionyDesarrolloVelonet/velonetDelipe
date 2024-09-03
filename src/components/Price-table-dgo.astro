@@ -1,16 +1,26 @@
+---
+interface Props {
+	canales: string;
+    text: string;
+    name: string
+}
+
+const { canales, text, name } = Astro.props;
+---
+
 <div class="coluna-planos group hover:-translate-y-1 duration-300 w-72 px-6 py-12 flex flex-col items-center relative">
     <div class="flex flex-row items-center gap-2">
-        <div><h3 class="text-6xl font-bold">13</h3></div>
+        <div><h3 class="text-6xl font-bold">{canales}</h3></div>
         <div class="flex flex-col">
-            <span class="text-white">CANAL**</span>
-            <span class="text-secondary text-xs">DGO FLEX</span>
+            <span class="text-white">CANALES</span>
+            <span class="text-secondary text-xs">DGO {name}</span>
         </div>
     </div>
     <div class="flex flex-row gap-2 mt-6 ml-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
-        <span class="text-sm">Series, películas y documentales. + 800 títulos On Demand.</span>
+        <span class="text-sm">{text}</span>
     </div>
-    <div class="mt-6 flex flex-col justify-center items-center">
+    <!-- <div class="mt-6 flex flex-col justify-center items-center">
         <span class="text-center text-base font-light">POR APENAS:</span>
         <div class="flex flex-row mt-2 justify-center items-center gap-2">
             <div><h3 class="text-6xl font-bold"><span class="text-secondary font-normal text-base">$</span>49</h3></div>
@@ -19,7 +29,7 @@
                 <span class="text-secondary text-xs">MENSUAL</span>
             </div>
         </div>
-    </div>
-    <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary text-white py-2 px-4 uppercase">Assine Já</button>
+    </div> -->
+    <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary text-white py-2 px-4 uppercase">Contrata ahora</button>
     <p class="text-sm text-white/50 font-light mt-6 text-center">*Organizado por categorías, incluye Mi Lista.</p>
 </div>
