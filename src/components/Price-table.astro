@@ -1,9 +1,11 @@
 ---
 interface Props {
-	mega: string;
+    mega: string;
+    popupImage: string; // A imagem para o popup
 }
 
-const { mega } = Astro.props;
+const { mega, popupImage } = Astro.props;
+const popupId = `popup-${mega}`; // Gerar um ID dinâmico baseado no valor de mega
 ---
 
 <div class="coluna-planos group hover:-translate-y-1 duration-300 w-72 px-6 py-12 flex flex-col items-center relative">
@@ -14,27 +16,68 @@ const { mega } = Astro.props;
             <span class="text-secondary text-xs">PARA TU HOGAR</span>
         </div>
     </div>
+
     <div class="flex flex-row gap-2 mt-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
         <p>Equipo router</p>
     </div>
+
     <div class="flex flex-row gap-2 mt-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
         <p>Wi-fi prémium</p>
     </div>
+
     <div class="flex flex-row gap-2 mt-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
         <p>Soporte técnico</p>
     </div>
-    <!-- <div class="mt-6 flex flex-col justify-center items-center">
-        <span class="text-center text-base font-light">POR APENAS:</span>
-        <div class="flex flex-row mt-2 justify-center items-center gap-2">
-            <div><h3 class="text-6xl font-bold"><span class="text-secondary font-normal text-base">$</span>99</h3></div>
-            <div class="flex flex-col">
-                <span class="text-white">.900</span>
-                <span class="text-secondary text-xs">MENSUAL</span>
-            </div>
-        </div>
-    </div> -->
-    <a href="https://wa.me/573336081044?text=%20%C2%A1Hola!%20vengo%20del%20sitio%20web" target="_blank" rel="noopener noreferrer"><button class="sign-up-btn w-full  rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary flex flex-row items-center justify-center gap-2 text-white py-2 px-8 uppercase">Contrata ahora <img class="h-6" src="/images/whatsapp.svg" alt=""></button></a>
+
+    <!-- Botão para abrir o popup -->
+    <button onclick={`openImagePopup('${popupImage}')`} class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Ver Mais</button>
+
+    <a href="https://wa.me/573336081044?text=%20%C2%A1Hola!%20vengo%20del%20sitio%20web" target="_blank" rel="noopener noreferrer">
+        <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary flex flex-row items-center justify-center gap-2 text-white py-2 px-8 uppercase">
+            Contrata ahora
+            <img class="h-6" src="/images/whatsapp.svg" alt="">
+        </button>
+    </a>
 </div>
+
+<!-- Lightbox Modal para Imagens -->
+<div
+    id="image-modal"
+    class="bg-[rgba(0,0,0,0.5)] h-full w-full hidden fixed z-50 top-0 left-0 overflow-auto flex justify-center items-center"
+>
+    <div
+        id="image-modal-content"
+        class="bg-white md:w-[50%] w-[90%] rounded-sm my-0 mx-auto p-12 justify-center flex flex-col relative"
+    >
+        <span class="absolute top-2 right-2 text-red-500 text-4xl font-bold cursor-pointer" onclick="closeImagePopup()">&times;</span>
+        <img id="popup-image" src="" alt="Plano" class="w-full h-auto" />
+    </div>
+</div>
+
+<script is:inline>
+    let imageModal = document.getElementById('image-modal');
+    let popupImage = document.getElementById('popup-image');
+
+    // Função para abrir o modal com a imagem correta
+    function openImagePopup(imageSrc) {
+        popupImage.src = imageSrc; // Define a fonte da imagem
+        imageModal.classList.remove('hidden'); // Exibe o modal
+        imageModal.classList.add('flex'); // Garante que o modal esteja visível e flexível
+    }
+
+    // Função para fechar o modal
+    function closeImagePopup() {
+        imageModal.classList.add('hidden'); // Esconde o modal
+        popupImage.src = ""; // Limpa a imagem
+    }
+
+    // Fecha o modal se clicar fora do conteúdo
+    window.onclick = function (event) {
+        if (event.target == imageModal) {
+            closeImagePopup();
+        }
+    };
+</script>

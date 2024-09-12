@@ -12,9 +12,9 @@ import Carrossel from './Carrossel.astro';
         </div>
         <div>
             <div class="flex flex-row max-lg:flex-col justify-center gap-8">
-                <PriceTable canales='13' text='Series, películas y documentales. + 800 títulos On Demand.' name='FLEX' />
-                <PriceTable canales='50' text='Series, películas y documentales. + 10.000 títulos On Demand.' name='BÁSICO' />
-                <PriceTable canales='89' text='Series, películas y documentales. + 10.000 títulos On Demand.' name='FULL' />
+                <PriceTable canales='13' text='Series, películas y documentales. + 800 títulos On Demand.' name='FLEX' image='/images/Pop.png' />
+                <PriceTable canales='50' text='Series, películas y documentales. + 10.000 títulos On Demand.' name='BÁSICO' image='/images/Basico.png' />
+                <PriceTable canales='89' text='Series, películas y documentales. + 10.000 títulos On Demand.' name='FULL' image='/images/Full.png' />
             </div>
         </div>
     </div>
@@ -23,5 +23,25 @@ import Carrossel from './Carrossel.astro';
         <img src="/images/Line.png" alt="">
     </div>
 
+    <div class="flex flex-col justify-center items-center mt-12">
+        <h2 class="text-xl flex flex-row gap-2 items-center max-lg:flex-col">Pregúntanos por la promoción con Win Sports + <img class="h-12" src="/images/Logowin.png" alt=""></h2>
+        <a href="https://api.whatsapp.com/send/?phone=573336081044&text=+%C2%A1Hola%21+vengo+del+sitio+web&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer"><button class="w-52 bg-secondary rounded-xl py-3 font-bold text-lg mt-4  hover:-translate-y-1 duration-300">Contáctenos</button></a>
+    </div>
+
 
 </section>
+
+
+<script is:inline>
+
+    const popupTv = document.getElementById('popuptv');
+
+    function showPopuptv() {
+        popupTv.classList.remove('hidden')
+    }
+
+    function closePopuptv() {
+        popupTv.classList.add('hidden')
+    }
+
+</script>
