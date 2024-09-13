@@ -32,15 +32,25 @@ const popupId = `popup-${mega}`; // Gerar um ID dinâmico baseado no valor de me
         <p>Soporte técnico</p>
     </div>
 
-    <!-- Botão para abrir o popup -->
-    <button onclick={`openImagePopup('${popupImage}')`} class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Ver Mais</button>
-
     <a href="https://wa.me/573336081044?text=%20%C2%A1Hola!%20vengo%20del%20sitio%20web" target="_blank" rel="noopener noreferrer">
         <button class="sign-up-btn w-full rounded-full font-bold mt-6 bg-gradient-to-r from-secondary to-primary flex flex-row items-center justify-center gap-2 text-white py-2 px-8 uppercase">
             Contrata ahora
             <img class="h-6" src="/images/whatsapp.svg" alt="">
         </button>
     </a>
+    
+    <!-- Botão TESTE para exibir todas as opções -->
+    <p onclick="showTeste()" class="mt-6 cursor-pointer text-white/70">VER MÁS BENEFICIOS</p>
+    
+    <!-- Campo de opções com classe comum para todas as tabelas -->
+    <div class="options hidden animate-fade">
+        <ul>
+            <li>teste</li>
+            <li>teste</li>
+            <li>teste</li>
+            <li>teste</li>
+        </ul>
+    </div>
 </div>
 
 <!-- Lightbox Modal para Imagens -->
@@ -80,4 +90,12 @@ const popupId = `popup-${mega}`; // Gerar um ID dinâmico baseado no valor de me
             closeImagePopup();
         }
     };
+
+    // Função para exibir ou ocultar todas as opções
+    function showTeste() {
+        const options = document.querySelectorAll('.options');
+        options.forEach(option => {
+            option.classList.toggle('hidden'); // Alterna entre mostrar e esconder todas as opções
+        });
+    }
 </script>

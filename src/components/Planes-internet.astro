@@ -1,6 +1,14 @@
 ---
 import PriceTable from './Price-table.astro';
 import Area from './CovereageArea.astro'
+import TrioPlano500 from './planos/trio/plano500.astro'
+import TrioPlano300 from './planos/trio/plano300.astro'
+import DuoPlano800 from './planos/duo/plano800.astro'
+import DuoPlano500 from './planos/duo/plano500.astro'
+import DuoPlano500Mov from './planos/duo/plano500-mov.astro'
+import DuoPlano500Cam from './planos/duo/plano500-cam.astro'
+import IntPlano500 from './planos/internet/plano500.astro'
+import IntPlano300 from './planos/internet/plano300.astro'
 ---
 
 <section class="bg-roxo px-24 max-lg:px-10 py-20">
@@ -10,63 +18,43 @@ import Area from './CovereageArea.astro'
             <h2 class="text-white text-3xl text-center mt-2">Conéctate con la mejor red. ¡Velonet te ofrece la velocidad y estabilidad que necesitas!</h2>
         </div>
 
-
         <!-- Tabs navigation -->
         <div class="flex items-center md:px-20 justify-center">
             <div class="bg-white py-4 px-20 rounded-full shadow-lg shadow-white/30">
                 <div class="tabs gap-12">
-                    <button class="tab-button rounded-full active" onclick="openTab(event, 'Internet')">Internet</button>
-                    <button class="tab-button rounded-full" onclick="openTab(event, 'Trio')">Trío</button>
-                    <button class="tab-button rounded-full" onclick="openTab(event, 'PackFibra')">Pack Fibra</button>
-                    <button class="tab-button rounded-full" onclick="openTab(event, 'PackDuo')">Pack Dúo</button>
-                    <button class="tab-button rounded-full" onclick="openTab(event, 'Duo')">Dúo</button>
+                    <button class="tab-button rounded-full active" data-tab="Internet">Internet</button>
+                    <button class="tab-button rounded-full" data-tab="Duo">Dúo</button>
+                    <button class="tab-button rounded-full" data-tab="Trio">Trío</button>
                 </div>
             </div>
         </div>
 
         <!-- Tab content -->
-        <div id="Internet" class="tab-content" style="display: block;">
-            <div class="flex flex-row max-lg:flex-col justify-between gap-8">
-                <PriceTable popupImage="/images/Full.png" mega='800' />
-                <PriceTable popupImage="/images/Flex.png" mega='500' />
-                <PriceTable popupImage="/images/Basico.png" mega='300' />
-                <PriceTable popupImage="/images/Full.png" mega='100' />
+        <div id="Internet" class="tab-content active-tab">
+            <div class="flex flex-row max-lg:flex-col justify-center gap-8">
+                <IntPlano500 />
+                <IntPlano300 />
             </div>
         </div>
 
-        <div id="Trio" class="tab-content" style="display: none;">
-            <div class="flex flex-row max-lg:flex-col justify-between gap-8">
+        <div id="Trio" class="tab-content">
+            <div class="flex flex-row max-lg:flex-col justify-center gap-8">
                 <!-- Trío Content Example -->
-                <PriceTable popupImage="" mega='600' />
-                <PriceTable popupImage="" mega='400' />
-                <PriceTable popupImage="" mega='200' />
+                <TrioPlano500 />
+                <TrioPlano300 />
             </div>
         </div>
 
-        <div id="PackFibra" class="tab-content" style="display: none;">
-            <div class="flex flex-row max-lg:flex-col justify-between gap-8">
-                <!-- Pack Fibra Content Example -->
-                <PriceTable popupImage="" mega='700' />
-                <PriceTable popupImage="" mega='500' />
-            </div>
-        </div>
-
-        <div id="PackDuo" class="tab-content" style="display: none;">
-            <div class="flex flex-row max-lg:flex-col justify-between gap-8">
-                <!-- Pack Dúo Content Example -->
-                <PriceTable popupImage="" mega='900' />
-                <PriceTable popupImage="" mega='600' />
-            </div>
-        </div>
-
-        <div id="Duo" class="tab-content" style="display: none;">
-            <div class="flex flex-row max-lg:flex-col justify-between gap-8">
+        <div id="Duo" class="tab-content">
+            <div class="flex flex-row max-lg:flex-col justify-center gap-8">
                 <!-- Dúo Content Example -->
-                <PriceTable popupImage="" mega='400' />
-                <PriceTable popupImage="" mega='200' />
+                <DuoPlano800 />
+                <DuoPlano500 />
+                <DuoPlano500Mov />
+                <DuoPlano500Cam />
+                
             </div>
         </div>
-
     </div>
 
     <div class="mt-16">
@@ -74,31 +62,35 @@ import Area from './CovereageArea.astro'
     </div>
 
     <Area />
-
 </section>
 
 <script is:inline>
-    function openTab(evt, tabName) {
-    // Get all elements with class="tab-content" and hide them
-    var tabContent = document.getElementsByClassName("tab-content");
-    for (var i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active state from all buttons and content
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active-tab'));
+
+            // Add active state to the clicked button and corresponding content
+            button.classList.add('active');
+            const tabName = button.getAttribute('data-tab');
+            document.getElementById(tabName).classList.add('active-tab');
+        });
+    });
+});
+
+    // Função para exibir ou ocultar todas as opções
+    function showTeste() {
+        const options = document.querySelectorAll('.options');
+        options.forEach(option => {
+            option.classList.toggle('hidden'); // Alterna entre mostrar e esconder todas as opções
+        });
     }
-
-    // Get all elements with class="tab-button" and remove the class "active"
-    var tabButtons = document.getElementsByClassName("tab-button");
-    for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-    }
-
-    // Show the current tab and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
 </script>
-
-
 
 <style>
     /* Style the tab buttons */
@@ -126,13 +118,13 @@ import Area from './CovereageArea.astro'
     color: white;
 }
 
-/* Hide all tab content by default */
+/* Hide all tab content by default, only show active one */
 .tab-content {
     display: none;
 }
 
-/* Make sure the active tab content is displayed */
-.tab-content.active {
+.tab-content.active-tab {
     display: block;
 }
 </style>
+

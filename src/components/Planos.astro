@@ -1,6 +1,9 @@
 ---
 import PriceTable from './Price-table-servicos.astro';
 import Area from '../components/CovereageArea.astro'
+import DuoPlano800 from './planos/duo/plano800.astro'
+import DuoPlano500Mov from './planos/duo/plano500-mov.astro'
+import DuoPlano500Cam from './planos/duo/plano500-cam.astro'
 ---
 
 <section class="bg-roxo px-24 max-lg:px-10 py-20">
@@ -14,9 +17,9 @@ import Area from '../components/CovereageArea.astro'
         </div>
         <div class="md:w-[70%]">
             <div class="flex flex-row max-lg:flex-col justify-between gap-8">
-                <PriceTable mega='800' image='/images/dgo.png' valor='109' />
-                <PriceTable mega='800' image='/images/movilidad.png' valor='99' />
-                <PriceTable mega='800' image='/images/cam.png' valor='99' />
+                <DuoPlano800 />
+                <DuoPlano500Mov />
+                <DuoPlano500Cam />
             </div>
         </div>
     </div>
@@ -28,3 +31,13 @@ import Area from '../components/CovereageArea.astro'
     <Area />
 
 </section>
+
+<script is:inline>
+        // Função para exibir ou ocultar todas as opções
+        function showTeste() {
+        const options = document.querySelectorAll('.options');
+        options.forEach(option => {
+            option.classList.toggle('hidden'); // Alterna entre mostrar e esconder todas as opções
+        });
+    }
+</script>
