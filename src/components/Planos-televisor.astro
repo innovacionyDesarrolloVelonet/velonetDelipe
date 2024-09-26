@@ -12,9 +12,9 @@ import Carrossel from './Carrossel.astro';
         </div>
         <div>
             <div class="flex flex-row max-lg:flex-col justify-center gap-8">
-                <PriceTable canales='13' text='Series, películas y documentales. + 800 títulos On Demand. - Ver canales' name='FLEX' image='/images/Pop.png' />
-                <PriceTable canales='50' text='Series, películas y documentales. + 10.000 títulos On Demand. - Ver canales' name='BÁSICO' image='/images/Basico.png' />
-                <PriceTable canales='89' text='Series, películas y documentales. + 10.000 títulos On Demand. Ver canales' name='FULL' image='/images/Full.png' />
+                <PriceTable canales='13' text='Series, películas y documentales. + 800 títulos On Demand. - Ver canales' name='FLEX' image='/images/flex.png' />
+                <PriceTable canales='50' text='Series, películas y documentales. + 10.000 títulos On Demand. - Ver canales' name='BÁSICO' image='/images/basico.png' />
+                <PriceTable canales='89' text='Series, películas y documentales. + 10.000 títulos On Demand. Ver canales' name='FULL' image='/images/full.png' />
             </div>
         </div>
     </div>
@@ -31,12 +31,24 @@ import Carrossel from './Carrossel.astro';
 
 </section>
 
+<!-- POPUP -->
+<div id="popuptv" class="fixed animate-fade inset-0 snap-center flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="flex justify-center items-center">
+        <button id="closePopuptv" onclick="closePopuptv()" class="absolute max-lg:top-5 max-lg:right-5 top-20 right-20 text-red-500 bg-white w-12 rounded-full hover:text-gray-800 text-2xl">
+            &times;
+          </button>
+        <img id="imagem" class="w-[60%] max-lg:w-full rounded-2xl" src= alt="">
+    </div>
+</div>
+
 
 <script is:inline>
 
+    const imageSrc = document.getElementById('imagem')
     const popupTv = document.getElementById('popuptv');
 
-    function showPopuptv() {
+    function showPopuptv(image) {
+        imageSrc.src = `${image}`;
         popupTv.classList.remove('hidden')
     }
 

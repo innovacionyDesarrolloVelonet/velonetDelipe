@@ -17,7 +17,7 @@ const { canales, text, name, image } = Astro.props;
             <span class="text-secondary text-xs">DGO {name}</span>
         </div>
     </div>
-    <div onclick="showPopuptv()" class="flex cursor-pointer flex-row gap-2 mt-6 ml-6 items-center">
+    <div onclick={`showPopuptv('${image}')`} class="flex cursor-pointer flex-row gap-2 mt-6 ml-6 items-center">
         <img class="h-6" src="/images/mais.svg" alt="">
         <span class="text-sm">{text}</span>
     </div>  
@@ -26,11 +26,4 @@ const { canales, text, name, image } = Astro.props;
     <p class="text-sm text-white/50 font-light mt-6 text-center">*Aplican términos y condiciones</p>
 </div>
 
-<div id="popuptv" class="fixed animate-fade inset-0 snap-center flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
-    <div class="flex justify-center items-center">
-        <button id="closePopuptv" onclick="closePopuptv()" class="absolute max-lg:top-5 max-lg:right-5 top-20 right-20 text-red-500 bg-white w-12 rounded-full hover:text-gray-800 text-2xl">
-            &times;
-          </button>
-        <img class="w-[60%] max-lg:w-full rounded-2xl" src={image} alt="">
-    </div>
-</div>
+
