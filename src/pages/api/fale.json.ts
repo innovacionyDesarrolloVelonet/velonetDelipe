@@ -10,10 +10,10 @@ export const POST: APIRoute = async ({ request }) => {
 
         // Preparando os dados do email
         const emailData = {
-            from: "'Formulário | Velonet Descuento' <sites@delipe.com.br>",
+            from: "'Formulário | Velonet Fale Conosco' <sites@delipe.com.br>",
             email: "comercial@velonet.co",
             subject: "Formulário de contato | Site",
-            text: `Celular: ${body.phone}`,
+            text: `Nome: ${body.name}\nDirección: ${body.address}\nTelefone: ${body.phone}\nMensagem: ${body.message}`,
             smtp: 'YjI5NmU3ZTA0Y2RkMGYxMTMwNWVjNjMwYmMxMzg1ODNhMTNhYWQ0M2IzODZlNDc2Njg2NGU2NjE1NzU5NWI3MDQyMTAzZDcyYmJjNzg2ZGQ2YmE4YTA4N2EwZjVhNmIxYWM3ZTgwNmFhMThjYjEwMjRkY2E2NTlmYmE0OTk5NDQwNzA2ZDY3NDMxYmNlYjUwYmRlODFjNTZlOTgzMWVjYTllM2ZlODFjNTIyOTFlYzNmYWUyNjAzOWI3YmViYmIzNzI0MjJjMzYzMTQ3MDA0ZGQzMTI4NTk0YWU0NTc1ZjY='
         };
 

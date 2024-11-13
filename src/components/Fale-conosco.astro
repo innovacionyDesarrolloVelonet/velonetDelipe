@@ -1,43 +1,64 @@
 <section class="px-24 max-lg:px-2 py-20">
-        
     <div data-aos="fade-up" class="shadow-2xl gap-72 rounded-2xl flex flex-row">
-
         <div data-aos="fade-up" class="md:w-[40%] my-20 ml-12">
             <h2 class="text-5xl text-black font-bold">¿Tienes <span class="text-primary">preguntas?</span></h2>
             <h3 class="text-black mt-6">¡Estamos aquí para ayudarte! Contáctanos y obtén respuestas rápidas y eficientes.</h3>
             <form id="fale" class="flex md:w-[700px] flex-col mt-6 gap-2" action="">
-                <input type="text" placeholder="Nombre:" class=" text-black" style="color: black;">
-                <input type="text" placeholder="Teléfono:" class=" text-black" style="color: black;">
-                <input type="text" placeholder="Dirección:" class=" text-black" style="color: black;">
-                <textarea name="message" id="" placeholder="Comentarios" class=" text-black" style="color: black;"></textarea>
-                <button class="uppercase bg-primary py-3 rounded-sm">Envía tu consulta</button>
+                <input type="text" id="name" name="name" placeholder="Nombre:" class="text-black" style="color: black;">
+                <input type="text" id="phone" name="phone" placeholder="Teléfono:" class="text-black" style="color: black;">
+                <input type="text" id="address" name="address" placeholder="Dirección:" class="text-black" style="color: black;">
+                <textarea id="message" name="message" placeholder="Comentarios" class="text-black" style="color: black;"></textarea>
+                <button type="submit" class="uppercase bg-primary py-3 rounded-sm">Envía tu consulta</button>
+                <p id="message-fale" class="text-green-500 mt-4 hidden">¡Gracias por ponerte en contacto! Nos comunicaremos con usted pronto.</p>
             </form>
             <ul class="mt-6 flex flex-row max-lg:flex-col gap-16 w-full justify-between items-center" style="flex-wrap: nowrap;">
-                <li class="flex flex-row items-center gap-2 text-lg text-black whitespace-nowrap">
-                    <a href="https://api.whatsapp.com/send/?phone=573336081044&text=+%C2%A1Hola%21+vengo+del+sitio+web&type=phone_number&app_absent=0" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="flex flex-row items-center gap-2 no-underline font-normal">
-                        <img class="h-6" src="/images/icon.svg" alt="">333 608 1044
-                    </a>
-                </li>                
-                <li class="flex flex-row items-center gap-2 text-lg text-black whitespace-nowrap">
-                    <a href="tel:3336080887" class="flex flex-row items-center gap-2 no-underline font-normal">
-                        <img class="h-6" src="/images/fixo.svg" alt="">333 608 0887
-                    </a>
-                </li>
-                
-                <li class="flex flex-row items-center gap-2 text-lg text-black whitespace-nowrap">
-                    <a href="mailto:internet@velonet.co" class="flex flex-row items-center gap-2 no-underline font-normal">
-                        <img class="h-6" src="/images/o-email.svg" alt="">internet@velonet.co
-                    </a>
-                </li>                      
-            </ul>            
+                <!-- Informações de contato -->
+            </ul>
         </div>
         <div class="md:w-[35%] bg-primary rounded-2xl">
-            <iframe class="w-full h-full top-12 rounded-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.9727883025585!2d-75.55718402432073!3d6.267309126086016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428ea42d28169%3A0x5924975d41596bc2!2sCl.%2072%20%2344%20105%2C%20Manrique%20Central%20II%2C%20Medell%C3%ADn%2C%20Manrique%2C%20Medell%C3%ADn%2C%20Colombia!5e0!3m2!1sen!2sbr!4v1724258841795!5m2!1sen!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe class="w-full h-full top-12 rounded-2xl" src="https://www.google.com/maps/embed?..."></iframe>
         </div>
-
     </div>
-
 </section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fale = document.getElementById('fale');
+    const messageFale = document.getElementById('message-fale');
+
+    fale.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(fale);
+      // Exibir a mensagem de confirmação após o envio bem-sucedido
+      messageFale.classList.add('hidden');
+
+      // Enviar dados para o servidor
+      fetch('/api/fale.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          address: formData.get('address'),
+          message: formData.get('message')
+         })
+      })
+      .then(response => {
+        console.log('Resposta do servidor:', response);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); // Verifique se o JSON é válido
+      })
+      .then(data => {
+        console.log('Dados recebidos:', data);
+        messageFale.classList.remove('hidden'); // Exibe a mensagem de sucesso
+        fale.reset(); // Limpa o formulário
+      })
+      .catch(error => console.error('Erro ao enviar o formulário:', error));
+    });
+  });
+</script>

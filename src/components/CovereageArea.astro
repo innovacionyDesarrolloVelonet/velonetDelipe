@@ -1,11 +1,56 @@
 <div data-aos="fade-up" class="coluna-planos mt-20 px-6 py-12">
     <h2 class="text-center text-2xl">Descubre si tienes cobertura con la red más confiable. ¡Es fácil y rápido!</h2>
     <div class="flex flex-row max-lg:flex-col justify-center items-center">
-        <form class="justify-between flex flex-row max-lg:flex-col mt-8 gap-3" action="">
-            <input type="text" placeholder="Nombre">
-            <input type="text" placeholder="Teléfono">
-            <input type="text" placeholder="Dirección">
-            <button class="w-64 rounded-full py-3 bg-secondary">Consulta tu cobertura aquí</button>
+        <form id="form-area" class="justify-between flex flex-row max-lg:flex-col mt-8 gap-3" action="">
+            <input type="text" id="nome" name="nome" placeholder="Nombre">
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono">
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección">
+            <button type="submit" class="w-64 rounded-full py-3 bg-secondary">Consulta tu cobertura aquí</button>
         </form>
+        <p id="message-area" class="text-green-500 mt-4 hidden">¡Gracias por ponerte en contacto! Nos comunicaremos con usted pronto.</p>
+
     </div>
 </div>
+
+<script is:inline>
+
+const formArea = document.getElementById('form-area');
+const messageArea = document.getElementById('message-area');
+
+formArea.addEventListener('submit', function(event) {
+  event.preventDefault();  
+
+  // Ocultar a mensagem de confirmação no início da requisição
+  messageArea.classList.add('hidden');
+
+  const formData = new FormData(formArea);
+
+  fetch('/api/area.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+      name: formData.get('nome'),
+      phone: formData.get('telefono'),
+      address: formData.get('direccion')
+     })
+  })
+  .then(response => {
+    console.log('Resposta do servidor:', response);
+    if (!response.ok) {
+      throw new Error('Erro ao enviar o formulário');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Dados recebidos:', data);
+    messageArea.classList.remove('hidden'); // Exibe a mensagem de sucesso
+    formArea.reset(); // Limpa o formulário
+  })
+  .catch(error => {
+    console.error('Erro:', error);
+  });
+});
+
+</script>
