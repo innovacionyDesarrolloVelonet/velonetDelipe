@@ -1,5 +1,5 @@
 {
-  "name": "velonet",
+  "name": "certain-chasm",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,14 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^11.2.0",
-    "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.13",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4"
-  },
-  "devDependencies": {
-    "sass": "^1.77.8"
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.6.3"
   }
 }
